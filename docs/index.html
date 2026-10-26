@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Open Company Harness — agents that live where people work</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff; --green:#3fb950; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55; }
+  main { max-width: 880px; margin: 0 auto; padding: 48px 20px 80px; }
+  h1 { font-size: 38px; margin: 0 0 8px; }
+  h2 { margin-top: 44px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .lede { font-size: 19px; color: var(--muted); }
+  a { color: var(--accent); }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+  pre { background: var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px; overflow-x:auto; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; font-size: 14px; }
+  th { background: var(--panel); }
+  .cards { display:grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap:12px; }
+  .card { background: var(--panel); border:1px solid var(--border); border-radius:8px; padding:16px; }
+  .card h3 { margin: 0 0 6px; font-size: 16px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14px; }
+  .pill { display:inline-block; border:1px solid var(--border); border-radius:999px; padding:1px 10px; font-size:12px; color:var(--accent); margin-right:6px; }
+  footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Open Company Harness</h1>
+  <p class="lede">The open, model-agnostic company harness: agents that live where people work, act under brokered identities, remember in two tiers, and touch secrets only through a proxy.</p>
+  <p>
+    <span class="pill">identity broker</span><span class="pill">two-tier memory</span><span class="pill">secret proxy</span>
+    <span class="pill">sandbox</span><span class="pill">ambient runs</span><span class="pill">audit trail</span>
+  </p>
+  <p>
+    <a href="https://github.com/ranadhir19/open-company-harness">Repository</a> ·
+    <a href="https://github.com/ranadhir19/open-company-harness#readme">README</a> ·
+    <a href="https://github.com/ranadhir19">Author</a>
+  </p>
+
+  <h2>The idea</h2>
+  <p>
+    Commercial "company harness" platforms put agents inside a company's chat workspace,
+    give them tools, memory, sandboxed code execution, and scheduled background work.
+    This project builds the same five components — framed by LangChain's
+    <a href="https://www.langchain.com/blog/components-building-company-harness">"The five components of building a company harness"</a> —
+    as an open, deterministic, offline-first Python package, so the policy questions can be
+    studied and measured: whose identity does an agent act under? What may one user's agent
+    tell another user? How does generated code call a service without ever holding its secret?
+  </p>
+  <p>
+    The answers are enforced, not documented: an identity broker decides every tool call
+    (on-behalf-of, service, or dual), blocks violations and logs them, and stamps every
+    action with the acting identity. Memory isolation is a wall with exactly three
+    promotion gates. Services are reachable only through a secret proxy that validates
+    scoped, short-lived capability tokens — raw credentials never enter the sandbox.
+  </p>
+
+  <h2>Measured results</h2>
+  <table>
+    <tr><th>Experiment</th><th>Result</th></tr>
+    <tr><td>E1 Cross-user memory isolation</td><td><strong>0 leaks</strong> in 36 cross-user queries over 12 ordered pairs; 0 ambient leaks; promotion battery agreement <strong>9/9</strong> — paraphrase corroboration and non-owner consent both refused</td></tr>
+    <tr><td>E2 Identity-policy enforcement</td><td><strong>192 decision cells, 0 mismatches</strong> vs an independent evaluator; 142 allowed / 50 blocked; <strong>142/142 legitimate cells passed</strong> (no over-blocking)</td></tr>
+    <tr><td>E3 Secret-proxy exfiltration</td><td><strong>5/5 adversarial probes refused</strong> (forged, wrong-service, out-of-scope, cross-run replay, expired); <strong>0 raw-secret materializations</strong> in any sandbox transcript or proxy output</td></tr>
+    <tr><td>E4 Ambient scheduling</td><td>Fire counts <strong>identical to an independent simulator</strong> on all four triggers (29 ambient runs, 97% of all runs); <strong>0 ambient identity violations</strong>; per-run and per-day budget caps enforced</td></tr>
+    <tr><td>E5 Audit completeness</td><td>Stamp coverage <strong>20/20</strong>; <strong>0 identity mismatches</strong>; blocked steps matched 2/2; runs with a run entry 8/8</td></tr>
+  </table>
+  <p>Full method and numbers: <a href="https://github.com/ranadhir19/open-company-harness/blob/main/results/results.md">results/results.md</a> in the repository. Expectations were derived independently of the code under test; near-miss negatives are first-class in every battery.</p>
+
+  <h2>The five components</h2>
+  <div class="cards">
+    <div class="card"><h3>1 · Lives where people work</h3><p>Workspace model of channels, DMs and threads. Conversations break out into agent-owned threads so agent work stays out of the human thread. Chat-adapter seam with an offline stub.</p></div>
+    <div class="card"><h3>2 · Identity broker</h3><p>Every tool declares ON_BEHALF_OF, SERVICE or DUAL. Per-surface gating (mail is DM-only), per-operation whitelists, approval gates. Violations are blocked and logged — never silently rerouted.</p></div>
+    <div class="card"><h3>3 · Two-tier memory</h3><p>Global tier plus per-user tier with enforced isolation and provenance on every fact. Promotion only by owner consent, multi-user corroboration, or a declared-global route that refuses user-sourced content.</p></div>
+    <div class="card"><h3>4 · Sandbox + secret proxy</h3><p>Deterministic sandbox seam plus a real subprocess implementation with a scrubbed environment. The proxy injects credentials host-side; the sandbox sees only scoped, short-lived capability tokens.</p></div>
+    <div class="card"><h3>5 · Ambient scheduler</h3><p>Cron-style interval/daily schedules and event triggers. Agents register schedules on a user's behalf. Ambient runs are budgeted and audited exactly like invoked runs.</p></div>
+    <div class="card"><h3>Managed layer</h3><p>Declared agents, run traces, per-step token/cost accounting, a budget governor, and human-approval gates — carried over from open-managed-agents.</p></div>
+  </div>
+
+  <h2>Quickstart</h2>
+  <pre>pip install open-company-harness
+PYTHONPATH=src python3 examples/quickstart.py
+PYTHONPATH=src python3 demo.py            # scripted Meridian Labs day
+PYTHONPATH=src python3 -m pytest tests/ -q # 53 tests
+PYTHONPATH=src python3 experiments/run_experiments.py</pre>
+  <p>The bundled scenario is a fictional company, Meridian Labs: four users, five channels, five tools (code host, CRM, mail, docs, social), three agents. A demo workspace UI (React + FastAPI + GraphQL) ships in the repo under <code>demo/</code> with a ready Render blueprint — deploy-ready, not deployed.</p>
+
+  <h2>Honest limitations</h2>
+  <p>
+    The subprocess sandbox is a process boundary, not a hardened container — it does not
+    itself block networking or filesystem access. Capability tokens are visible inside the
+    sandbox by design; they are opaque, single-service, single-run and short-lived, and E3
+    is the evidence they are useless outside their scope. Memory corroboration uses strict
+    lexical token-set equivalence, so paraphrases do not promote. Experiments run on the
+    scripted provider over declared task templates; nothing here measures model behaviour.
+  </p>
+
+  <footer>
+    Built by <a href="https://github.com/ranadhir19">Ranadhir Ghosh</a> · MIT License ·
+    Framing credited to LangChain's company-harness post · Siblings:
+    <a href="https://ranadhir19.github.io/open-managed-agents/">open-managed-agents</a>,
+    <a href="https://ranadhir19.github.io/unified-agent-memory/">unified-agent-memory</a>
+  </footer>
+</main>
+</body>
+</html>

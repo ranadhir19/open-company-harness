@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-company-harness"
+version = "0.1.0"
+description = "An open, model-agnostic company harness: declared agents that live in team channels, act under a brokered identity policy, remember in two tiers, execute code behind a secret proxy, and run ambiently on schedules and events"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["matplotlib"]
+
+[project.optional-dependencies]
+demo = ["fastapi", "strawberry-graphql[fastapi]", "uvicorn"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

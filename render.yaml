@@ -1,0 +1,25 @@
+# Render blueprint: FastAPI demo backend (web service) + React demo UI
+# (static site). The API seeds itself with the fictional Meridian Labs
+# scenario on startup, so the demo shows the workspace, agents, audit
+# trail and two-tier memory with zero external services.
+services:
+  - type: web
+    name: open-company-harness-api
+    env: python
+    buildCommand: pip install ".[demo]"
+    startCommand: uvicorn demo.backend.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+
+  - type: web
+    name: open-company-harness-web
+    env: static
+    buildCommand: cd demo/web && npm install && npm run build
+    staticPublishPath: demo/web/dist
+    envVars:
+      # Point the UI at the API service once it exists:
+      # - key: VITE_API_URL
+      #   value: https://open-company-harness-api.onrender.com
+      - key: NODE_VERSION
+        value: 20
