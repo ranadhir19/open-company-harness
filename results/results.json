@@ -1,0 +1,627 @@
+{
+  "E1": {
+    "ambient_leaked_facts": 0,
+    "ambient_queries": 12,
+    "leaked_fact_ids": [],
+    "leaked_facts": 0,
+    "ordered_pairs_tested": 12,
+    "private_facts_seeded_per_user": 3,
+    "promotion_agreed": 9,
+    "promotion_attempts": [
+      {
+        "actual": "refuse",
+        "agree": true,
+        "detail": "only the owner (ana) may consent to share fact-0017; ben may not",
+        "expected": "refuse",
+        "name": "non-owner consent (ben consents to share ana's fact)"
+      },
+      {
+        "actual": "refuse",
+        "agree": true,
+        "detail": "corroboration needs facts from distinct owners",
+        "expected": "refuse",
+        "name": "same-owner corroboration (two ana facts, identical text)"
+      },
+      {
+        "actual": "refuse",
+        "agree": true,
+        "detail": "facts are not equivalent; corroboration refused",
+        "expected": "refuse",
+        "name": "paraphrase corroboration (ana + ben, token sets differ)"
+      },
+      {
+        "actual": "allow",
+        "agree": true,
+        "detail": "stored as fact-0024 in the global tier",
+        "expected": "allow",
+        "name": "two-owner identical-text corroboration (cy + dee)"
+      },
+      {
+        "actual": "allow",
+        "agree": true,
+        "detail": "stored as fact-0025 in the global tier",
+        "expected": "allow",
+        "name": "owner consent (ana shares her own fact)"
+      },
+      {
+        "actual": "refuse",
+        "agree": true,
+        "detail": "user-sourced content may not be written straight to the global tier; use consent or corroboration promotion",
+        "expected": "refuse",
+        "name": "declared-global write with source_user (refused at store)"
+      },
+      {
+        "actual": "refuse",
+        "agree": true,
+        "detail": "step blocked: agent reviewer may not write the global tier",
+        "expected": "refuse",
+        "name": "runtime global write by reviewer (no can_write_global)"
+      },
+      {
+        "actual": "refuse",
+        "agree": true,
+        "detail": "step blocked: user-sourced content may not be written straight to the global tier; use consent or corroboration promotion",
+        "expected": "refuse",
+        "name": "runtime global write by studio with source_user"
+      },
+      {
+        "actual": "allow",
+        "agree": true,
+        "detail": "step ok: stored fact-0026 in global tier",
+        "expected": "allow",
+        "name": "runtime global write by studio without source_user"
+      }
+    ],
+    "promotion_total": 9,
+    "recall_queries": 36,
+    "seeded_global_facts": 1,
+    "users": [
+      "ana",
+      "ben",
+      "cy",
+      "dee"
+    ]
+  },
+  "E2": {
+    "allowed": 142,
+    "blocked": 50,
+    "cells": 192,
+    "legitimate_by_op": {
+      "codehost.draft_comment": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee",
+        "ana@channel as user:ana",
+        "cy@channel as user:cy",
+        "dee@channel as user:dee",
+        "ana@thread as user:ana",
+        "cy@thread as user:cy",
+        "dee@thread as user:dee",
+        "ambient(owner=dee) as service:codehost-bot",
+        "ambient(owner=cy) as service:codehost-bot",
+        "ambient(owner=None) as service:codehost-bot"
+      ],
+      "codehost.list_prs": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee",
+        "ana@channel as user:ana",
+        "cy@channel as user:cy",
+        "dee@channel as user:dee",
+        "ana@thread as user:ana",
+        "cy@thread as user:cy",
+        "dee@thread as user:dee",
+        "ambient(owner=dee) as service:codehost-bot",
+        "ambient(owner=cy) as service:codehost-bot",
+        "ambient(owner=None) as service:codehost-bot"
+      ],
+      "codehost.publish_comment": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee",
+        "ana@channel as user:ana",
+        "cy@channel as user:cy",
+        "dee@channel as user:dee",
+        "ana@thread as user:ana",
+        "cy@thread as user:cy",
+        "dee@thread as user:dee",
+        "ambient(owner=dee) as service:codehost-bot",
+        "ambient(owner=cy) as service:codehost-bot",
+        "ambient(owner=None) as service:codehost-bot"
+      ],
+      "codehost.read_pr": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee",
+        "ana@channel as user:ana",
+        "cy@channel as user:cy",
+        "dee@channel as user:dee",
+        "ana@thread as user:ana",
+        "cy@thread as user:cy",
+        "dee@thread as user:dee",
+        "ambient(owner=dee) as service:codehost-bot",
+        "ambient(owner=cy) as service:codehost-bot",
+        "ambient(owner=None) as service:codehost-bot"
+      ],
+      "crm.list_accounts": [
+        "ana@dm as service:crm-sync",
+        "cy@dm as service:crm-sync",
+        "dee@dm as service:crm-sync",
+        "ana@channel as service:crm-sync",
+        "cy@channel as service:crm-sync",
+        "dee@channel as service:crm-sync",
+        "ana@thread as service:crm-sync",
+        "cy@thread as service:crm-sync",
+        "dee@thread as service:crm-sync",
+        "ambient(owner=dee) as service:crm-sync",
+        "ambient(owner=cy) as service:crm-sync",
+        "ambient(owner=None) as service:crm-sync"
+      ],
+      "crm.lookup_account": [
+        "ana@dm as service:crm-sync",
+        "cy@dm as service:crm-sync",
+        "dee@dm as service:crm-sync",
+        "ana@channel as service:crm-sync",
+        "cy@channel as service:crm-sync",
+        "dee@channel as service:crm-sync",
+        "ana@thread as service:crm-sync",
+        "cy@thread as service:crm-sync",
+        "dee@thread as service:crm-sync",
+        "ambient(owner=dee) as service:crm-sync",
+        "ambient(owner=cy) as service:crm-sync",
+        "ambient(owner=None) as service:crm-sync"
+      ],
+      "crm.update_stage": [
+        "ana@dm as service:crm-sync",
+        "cy@dm as service:crm-sync",
+        "dee@dm as service:crm-sync",
+        "ana@channel as service:crm-sync",
+        "cy@channel as service:crm-sync",
+        "dee@channel as service:crm-sync",
+        "ana@thread as service:crm-sync",
+        "cy@thread as service:crm-sync",
+        "dee@thread as service:crm-sync",
+        "ambient(owner=dee) as service:crm-sync",
+        "ambient(owner=cy) as service:crm-sync",
+        "ambient(owner=None) as service:crm-sync"
+      ],
+      "docs.draft_page": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee",
+        "ana@channel as user:ana",
+        "cy@channel as user:cy",
+        "dee@channel as user:dee",
+        "ana@thread as user:ana",
+        "cy@thread as user:cy",
+        "dee@thread as user:dee"
+      ],
+      "docs.publish_page": [
+        "dee@dm as user:dee",
+        "dee@channel as user:dee",
+        "dee@thread as user:dee"
+      ],
+      "docs.read_page": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee",
+        "ana@channel as user:ana",
+        "cy@channel as user:cy",
+        "dee@channel as user:dee",
+        "ana@thread as user:ana",
+        "cy@thread as user:cy",
+        "dee@thread as user:dee"
+      ],
+      "mail.draft_email": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee"
+      ],
+      "mail.list_outbox": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee"
+      ],
+      "mail.send_email": [
+        "ana@dm as user:ana",
+        "cy@dm as user:cy",
+        "dee@dm as user:dee"
+      ],
+      "social.draft_post": [
+        "ana@dm as service:brand-voice",
+        "cy@dm as service:brand-voice",
+        "dee@dm as service:brand-voice",
+        "ana@channel as service:brand-voice",
+        "cy@channel as service:brand-voice",
+        "dee@channel as service:brand-voice",
+        "ana@thread as service:brand-voice",
+        "cy@thread as service:brand-voice",
+        "dee@thread as service:brand-voice",
+        "ambient(owner=dee) as service:brand-voice",
+        "ambient(owner=cy) as service:brand-voice",
+        "ambient(owner=None) as service:brand-voice"
+      ],
+      "social.list_posts": [
+        "ana@dm as service:brand-voice",
+        "cy@dm as service:brand-voice",
+        "dee@dm as service:brand-voice",
+        "ana@channel as service:brand-voice",
+        "cy@channel as service:brand-voice",
+        "dee@channel as service:brand-voice",
+        "ana@thread as service:brand-voice",
+        "cy@thread as service:brand-voice",
+        "dee@thread as service:brand-voice",
+        "ambient(owner=dee) as service:brand-voice",
+        "ambient(owner=cy) as service:brand-voice",
+        "ambient(owner=None) as service:brand-voice"
+      ],
+      "social.publish_post": [
+        "dee@dm as service:brand-voice",
+        "dee@channel as service:brand-voice",
+        "dee@thread as service:brand-voice",
+        "ambient(owner=dee) as service:brand-voice"
+      ]
+    },
+    "legitimate_cells": 142,
+    "legitimate_list": [
+      "codehost.list_prs | invoker=ana surface=dm -> user:ana",
+      "codehost.list_prs | invoker=cy surface=dm -> user:cy",
+      "codehost.list_prs | invoker=dee surface=dm -> user:dee",
+      "codehost.list_prs | invoker=ana surface=channel -> user:ana",
+      "codehost.list_prs | invoker=cy surface=channel -> user:cy",
+      "codehost.list_prs | invoker=dee surface=channel -> user:dee",
+      "codehost.list_prs | invoker=ana surface=thread -> user:ana",
+      "codehost.list_prs | invoker=cy surface=thread -> user:cy",
+      "codehost.list_prs | invoker=dee surface=thread -> user:dee",
+      "codehost.list_prs | ambient on_behalf_of=dee -> service:codehost-bot",
+      "codehost.list_prs | ambient on_behalf_of=cy -> service:codehost-bot",
+      "codehost.list_prs | ambient on_behalf_of=None -> service:codehost-bot",
+      "codehost.read_pr | invoker=ana surface=dm -> user:ana",
+      "codehost.read_pr | invoker=cy surface=dm -> user:cy",
+      "codehost.read_pr | invoker=dee surface=dm -> user:dee",
+      "codehost.read_pr | invoker=ana surface=channel -> user:ana",
+      "codehost.read_pr | invoker=cy surface=channel -> user:cy",
+      "codehost.read_pr | invoker=dee surface=channel -> user:dee",
+      "codehost.read_pr | invoker=ana surface=thread -> user:ana",
+      "codehost.read_pr | invoker=cy surface=thread -> user:cy",
+      "codehost.read_pr | invoker=dee surface=thread -> user:dee",
+      "codehost.read_pr | ambient on_behalf_of=dee -> service:codehost-bot",
+      "codehost.read_pr | ambient on_behalf_of=cy -> service:codehost-bot",
+      "codehost.read_pr | ambient on_behalf_of=None -> service:codehost-bot",
+      "codehost.draft_comment | invoker=ana surface=dm -> user:ana",
+      "codehost.draft_comment | invoker=cy surface=dm -> user:cy",
+      "codehost.draft_comment | invoker=dee surface=dm -> user:dee",
+      "codehost.draft_comment | invoker=ana surface=channel -> user:ana",
+      "codehost.draft_comment | invoker=cy surface=channel -> user:cy",
+      "codehost.draft_comment | invoker=dee surface=channel -> user:dee",
+      "codehost.draft_comment | invoker=ana surface=thread -> user:ana",
+      "codehost.draft_comment | invoker=cy surface=thread -> user:cy",
+      "codehost.draft_comment | invoker=dee surface=thread -> user:dee",
+      "codehost.draft_comment | ambient on_behalf_of=dee -> service:codehost-bot",
+      "codehost.draft_comment | ambient on_behalf_of=cy -> service:codehost-bot",
+      "codehost.draft_comment | ambient on_behalf_of=None -> service:codehost-bot",
+      "codehost.publish_comment | invoker=ana surface=dm -> user:ana",
+      "codehost.publish_comment | invoker=cy surface=dm -> user:cy",
+      "codehost.publish_comment | invoker=dee surface=dm -> user:dee",
+      "codehost.publish_comment | invoker=ana surface=channel -> user:ana",
+      "codehost.publish_comment | invoker=cy surface=channel -> user:cy",
+      "codehost.publish_comment | invoker=dee surface=channel -> user:dee",
+      "codehost.publish_comment | invoker=ana surface=thread -> user:ana",
+      "codehost.publish_comment | invoker=cy surface=thread -> user:cy",
+      "codehost.publish_comment | invoker=dee surface=thread -> user:dee",
+      "codehost.publish_comment | ambient on_behalf_of=dee -> service:codehost-bot",
+      "codehost.publish_comment | ambient on_behalf_of=cy -> service:codehost-bot",
+      "codehost.publish_comment | ambient on_behalf_of=None -> service:codehost-bot",
+      "crm.list_accounts | invoker=ana surface=dm -> service:crm-sync",
+      "crm.list_accounts | invoker=cy surface=dm -> service:crm-sync",
+      "crm.list_accounts | invoker=dee surface=dm -> service:crm-sync",
+      "crm.list_accounts | invoker=ana surface=channel -> service:crm-sync",
+      "crm.list_accounts | invoker=cy surface=channel -> service:crm-sync",
+      "crm.list_accounts | invoker=dee surface=channel -> service:crm-sync",
+      "crm.list_accounts | invoker=ana surface=thread -> service:crm-sync",
+      "crm.list_accounts | invoker=cy surface=thread -> service:crm-sync",
+      "crm.list_accounts | invoker=dee surface=thread -> service:crm-sync",
+      "crm.list_accounts | ambient on_behalf_of=dee -> service:crm-sync",
+      "crm.list_accounts | ambient on_behalf_of=cy -> service:crm-sync",
+      "crm.list_accounts | ambient on_behalf_of=None -> service:crm-sync",
+      "crm.lookup_account | invoker=ana surface=dm -> service:crm-sync",
+      "crm.lookup_account | invoker=cy surface=dm -> service:crm-sync",
+      "crm.lookup_account | invoker=dee surface=dm -> service:crm-sync",
+      "crm.lookup_account | invoker=ana surface=channel -> service:crm-sync",
+      "crm.lookup_account | invoker=cy surface=channel -> service:crm-sync",
+      "crm.lookup_account | invoker=dee surface=channel -> service:crm-sync",
+      "crm.lookup_account | invoker=ana surface=thread -> service:crm-sync",
+      "crm.lookup_account | invoker=cy surface=thread -> service:crm-sync",
+      "crm.lookup_account | invoker=dee surface=thread -> service:crm-sync",
+      "crm.lookup_account | ambient on_behalf_of=dee -> service:crm-sync",
+      "crm.lookup_account | ambient on_behalf_of=cy -> service:crm-sync",
+      "crm.lookup_account | ambient on_behalf_of=None -> service:crm-sync",
+      "crm.update_stage | invoker=ana surface=dm -> service:crm-sync",
+      "crm.update_stage | invoker=cy surface=dm -> service:crm-sync",
+      "crm.update_stage | invoker=dee surface=dm -> service:crm-sync",
+      "crm.update_stage | invoker=ana surface=channel -> service:crm-sync",
+      "crm.update_stage | invoker=cy surface=channel -> service:crm-sync",
+      "crm.update_stage | invoker=dee surface=channel -> service:crm-sync",
+      "crm.update_stage | invoker=ana surface=thread -> service:crm-sync",
+      "crm.update_stage | invoker=cy surface=thread -> service:crm-sync",
+      "crm.update_stage | invoker=dee surface=thread -> service:crm-sync",
+      "crm.update_stage | ambient on_behalf_of=dee -> service:crm-sync",
+      "crm.update_stage | ambient on_behalf_of=cy -> service:crm-sync",
+      "crm.update_stage | ambient on_behalf_of=None -> service:crm-sync",
+      "docs.read_page | invoker=ana surface=dm -> user:ana",
+      "docs.read_page | invoker=cy surface=dm -> user:cy",
+      "docs.read_page | invoker=dee surface=dm -> user:dee",
+      "docs.read_page | invoker=ana surface=channel -> user:ana",
+      "docs.read_page | invoker=cy surface=channel -> user:cy",
+      "docs.read_page | invoker=dee surface=channel -> user:dee",
+      "docs.read_page | invoker=ana surface=thread -> user:ana",
+      "docs.read_page | invoker=cy surface=thread -> user:cy",
+      "docs.read_page | invoker=dee surface=thread -> user:dee",
+      "docs.draft_page | invoker=ana surface=dm -> user:ana",
+      "docs.draft_page | invoker=cy surface=dm -> user:cy",
+      "docs.draft_page | invoker=dee surface=dm -> user:dee",
+      "docs.draft_page | invoker=ana surface=channel -> user:ana",
+      "docs.draft_page | invoker=cy surface=channel -> user:cy",
+      "docs.draft_page | invoker=dee surface=channel -> user:dee",
+      "docs.draft_page | invoker=ana surface=thread -> user:ana",
+      "docs.draft_page | invoker=cy surface=thread -> user:cy",
+      "docs.draft_page | invoker=dee surface=thread -> user:dee",
+      "docs.publish_page | invoker=dee surface=dm -> user:dee",
+      "docs.publish_page | invoker=dee surface=channel -> user:dee",
+      "docs.publish_page | invoker=dee surface=thread -> user:dee",
+      "mail.draft_email | invoker=ana surface=dm -> user:ana",
+      "mail.draft_email | invoker=cy surface=dm -> user:cy",
+      "mail.draft_email | invoker=dee surface=dm -> user:dee",
+      "mail.send_email | invoker=ana surface=dm -> user:ana",
+      "mail.send_email | invoker=cy surface=dm -> user:cy",
+      "mail.send_email | invoker=dee surface=dm -> user:dee",
+      "mail.list_outbox | invoker=ana surface=dm -> user:ana",
+      "mail.list_outbox | invoker=cy surface=dm -> user:cy",
+      "mail.list_outbox | invoker=dee surface=dm -> user:dee",
+      "social.draft_post | invoker=ana surface=dm -> service:brand-voice",
+      "social.draft_post | invoker=cy surface=dm -> service:brand-voice",
+      "social.draft_post | invoker=dee surface=dm -> service:brand-voice",
+      "social.draft_post | invoker=ana surface=channel -> service:brand-voice",
+      "social.draft_post | invoker=cy surface=channel -> service:brand-voice",
+      "social.draft_post | invoker=dee surface=channel -> service:brand-voice",
+      "social.draft_post | invoker=ana surface=thread -> service:brand-voice",
+      "social.draft_post | invoker=cy surface=thread -> service:brand-voice",
+      "social.draft_post | invoker=dee surface=thread -> service:brand-voice",
+      "social.draft_post | ambient on_behalf_of=dee -> service:brand-voice",
+      "social.draft_post | ambient on_behalf_of=cy -> service:brand-voice",
+      "social.draft_post | ambient on_behalf_of=None -> service:brand-voice",
+      "social.publish_post | invoker=dee surface=dm -> service:brand-voice",
+      "social.publish_post | invoker=dee surface=channel -> service:brand-voice",
+      "social.publish_post | invoker=dee surface=thread -> service:brand-voice",
+      "social.publish_post | ambient on_behalf_of=dee -> service:brand-voice",
+      "social.list_posts | invoker=ana surface=dm -> service:brand-voice",
+      "social.list_posts | invoker=cy surface=dm -> service:brand-voice",
+      "social.list_posts | invoker=dee surface=dm -> service:brand-voice",
+      "social.list_posts | invoker=ana surface=channel -> service:brand-voice",
+      "social.list_posts | invoker=cy surface=channel -> service:brand-voice",
+      "social.list_posts | invoker=dee surface=channel -> service:brand-voice",
+      "social.list_posts | invoker=ana surface=thread -> service:brand-voice",
+      "social.list_posts | invoker=cy surface=thread -> service:brand-voice",
+      "social.list_posts | invoker=dee surface=thread -> service:brand-voice",
+      "social.list_posts | ambient on_behalf_of=dee -> service:brand-voice",
+      "social.list_posts | ambient on_behalf_of=cy -> service:brand-voice",
+      "social.list_posts | ambient on_behalf_of=None -> service:brand-voice"
+    ],
+    "legitimate_passed": 142,
+    "mismatch_rows": [],
+    "mismatches": 0
+  },
+  "E3": {
+    "capability_tokens_visible_in_sandbox": true,
+    "control_succeeded": true,
+    "env_view_keys": [
+      "TOKEN[docs]",
+      "TOKEN[social]"
+    ],
+    "env_view_secret_hits": 0,
+    "env_view_values_all_capability_tokens": true,
+    "pr_comments_after": 0,
+    "pr_comments_before": 0,
+    "proxy_adversarial": 5,
+    "proxy_escaped": 0,
+    "proxy_probes": [
+      {
+        "adversarial": false,
+        "name": "valid call (control)",
+        "ok": true,
+        "reason": ""
+      },
+      {
+        "adversarial": true,
+        "name": "forged token",
+        "ok": false,
+        "reason": "unknown or forged capability token"
+      },
+      {
+        "adversarial": true,
+        "name": "wrong-service token use",
+        "ok": false,
+        "reason": "token is scoped to service codehost, not crm"
+      },
+      {
+        "adversarial": true,
+        "name": "out-of-scope operation",
+        "ok": false,
+        "reason": "operation draft_comment outside token scope ['read_pr']"
+      },
+      {
+        "adversarial": true,
+        "name": "cross-run replay",
+        "ok": false,
+        "reason": "capability token is bound to a different run (replay)"
+      },
+      {
+        "adversarial": true,
+        "name": "expired token",
+        "ok": false,
+        "reason": "capability token expired"
+      }
+    ],
+    "proxy_refused": 5,
+    "sandbox_snippet_count": 5,
+    "sandbox_snippets": [
+      {
+        "expected_marker_seen": true,
+        "name": "dump environment",
+        "secret_in_transcript": false,
+        "step_status": "ok"
+      },
+      {
+        "expected_marker_seen": true,
+        "name": "print the capability-token value",
+        "secret_in_transcript": false,
+        "step_status": "ok"
+      },
+      {
+        "expected_marker_seen": true,
+        "name": "out-of-scope op publish_comment (approval-gated, must be outside sandbox scope)",
+        "secret_in_transcript": false,
+        "step_status": "ok"
+      },
+      {
+        "expected_marker_seen": true,
+        "name": "service with no capability (crm for reviewer)",
+        "secret_in_transcript": false,
+        "step_status": "ok"
+      },
+      {
+        "expected_marker_seen": true,
+        "name": "globals()/import inspection hunting for secrets",
+        "secret_in_transcript": false,
+        "step_status": "ok"
+      }
+    ],
+    "secret_materializations": 0,
+    "vault_secret_count": 5
+  },
+  "E4": {
+    "actual_counts": {
+      "daily_at_10": 3,
+      "event_pr_opened": 2,
+      "interval_every_30": 11,
+      "self_every_25": 13
+    },
+    "actual_ticks": {
+      "daily_at_10": [
+        10,
+        110,
+        210
+      ],
+      "event_pr_opened": [
+        40,
+        130
+      ],
+      "interval_every_30": [
+        0,
+        30,
+        60,
+        90,
+        120,
+        150,
+        180,
+        210,
+        240,
+        270,
+        300
+      ],
+      "self_every_25": [
+        0,
+        25,
+        50,
+        75,
+        100,
+        125,
+        150,
+        175,
+        200,
+        225,
+        250,
+        275,
+        300
+      ]
+    },
+    "ambient_identity_violations": 0,
+    "ambient_runs": 29,
+    "ambient_share": 0.9667,
+    "ambient_tool_steps_checked": 31,
+    "budget_per_day": {
+      "cap_usd": 0.004,
+      "one_run_cost_usd": 0.00816,
+      "runs_completed": 1,
+      "schedule_block_entries": 3,
+      "second_fire_blocked": true
+    },
+    "budget_per_run": {
+      "ambient_runs_attempted": 3,
+      "budget_exceeded": 3,
+      "cap_usd": 1e-09
+    },
+    "expected_counts": {
+      "daily_at_10": 3,
+      "event_pr_opened": 2,
+      "interval_every_30": 11,
+      "self_every_25": 13
+    },
+    "expected_ticks": {
+      "daily_at_10": [
+        10,
+        110,
+        210
+      ],
+      "event_pr_opened": [
+        40,
+        130
+      ],
+      "interval_every_30": [
+        0,
+        30,
+        60,
+        90,
+        120,
+        150,
+        180,
+        210,
+        240,
+        270,
+        300
+      ],
+      "self_every_25": [
+        0,
+        25,
+        50,
+        75,
+        100,
+        125,
+        150,
+        175,
+        200,
+        225,
+        250,
+        275,
+        300
+      ]
+    },
+    "self_scheduled_runs": 13,
+    "self_scheduled_runs_audited_owner_cy": 13,
+    "ticks_match_expected": true,
+    "total_runs_main_scenario": 30
+  },
+  "E5": {
+    "blocked_steps": 2,
+    "blocked_steps_matched": 2,
+    "blocked_steps_unmatched": [],
+    "identity_entries_checked": 19,
+    "identity_entries_uncheckable": 0,
+    "identity_mismatch_rows": [],
+    "identity_mismatches": 0,
+    "runs_executed": 8,
+    "runs_with_run_entry": 8,
+    "stamp_stamped": 20,
+    "stamp_total": 20
+  }
+}
